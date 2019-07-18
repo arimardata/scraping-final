@@ -37,5 +37,11 @@ for index in range(len(Dict)):
 		newvalues = { "$set": { "Files": fileID } }
 		print('5')
 		db['AppelOffre'].update(myquery, newvalues)
+
+		print('6')
+		fileID2 = fs.put( open( 'C://Users/Jarvis/Desktop/Scrapping_Module/Data/Sodipress'+str(Dict[index]['Num_Ordre'] )+'.pdf', 'rb'),filename='PDF'+str(Dict[index]['Num_Ordre'] ) )
+		newvalues2 = { "$set": { "PDFs": fileID2 } }
+		print('7')
+		db['AppelOffre'].update(myquery, newvalues2)
 	except:
 		print('ERROR update')
