@@ -30,16 +30,16 @@ for index in range(len(Dict)):
 		print('1')
 		fs = gridfs.GridFS( db )
 		print('2')
-		fileID = fs.put( open( 'C://Users/Jarvis/Desktop/Scrapping_Module/Data/Sodipress'+str(Dict[index]['Num_Ordre'] )+'.rar', 'rb'),filename=str(Dict[index]['Num_Ordre'] ) )
+		fileID = fs.put( open( 'C://Users/Jarvis/Desktop/Scrapping_Module/Data/Sodipress'+str(Dict[index]['_id'] )+'.rar', 'rb'),filename=str(Dict[index]['_id'] ) )
 		print('3')
-		myquery = { "Num_Ordre": str(Dict[index]['Num_Ordre'] ) }
+		myquery = { "_id": str(Dict[index]['_id'] ) }
 		print('4')
 		newvalues = { "$set": { "Files": fileID } }
 		print('5')
 		db['AppelOffre'].update(myquery, newvalues)
 
 		print('6')
-		fileID2 = fs.put( open( 'C://Users/Jarvis/Desktop/Scrapping_Module/Data/Sodipress'+str(Dict[index]['Num_Ordre'] )+'.pdf', 'rb'),filename='PDF'+str(Dict[index]['Num_Ordre'] ) )
+		fileID2 = fs.put( open( 'C://Users/Jarvis/Desktop/Scrapping_Module/Data/Sodipress'+str(Dict[index]['_id'] )+'.pdf', 'rb'),filename='PDF'+str(Dict[index]['_id'] ) )
 		newvalues2 = { "$set": { "PDFs": fileID2 } }
 		print('7')
 		db['AppelOffre'].update(myquery, newvalues2)
